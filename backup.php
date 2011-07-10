@@ -38,9 +38,9 @@
 			*/
 			
 			array(
-				'db_host' 		=> 'internal-db.s62987.gridserver.com',
-				'db_user' 		=> 'db62987',
-				'db_pass' 		=> 'm1ke1990',
+				'db_host' 		=> '',
+				'db_user' 		=> '',
+				'db_pass' 		=> '',
 				
 				'local_path'	=> dirname(__FILE__) . '/mysql-backups/',
 				'ignore_db'		=> array('information_schema'),
