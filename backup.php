@@ -19,6 +19,7 @@
 	* -- 'mysqldump_location' - the location of the mysqldump tool (defult: '/usr/bin/mysqldump')
 	* -- 'local_path' - The path to the folder where the backups will be held. If the folder does not
 	*					exis it will be created. (required)
+	* -- 'send_s3' - Currently does not do anything
 	*/
 
 	$config = array(
