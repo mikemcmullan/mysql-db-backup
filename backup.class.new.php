@@ -168,12 +168,12 @@
                 {
                     //print_r($host);
                     $dir = $this->create_directory_structure($host['local_path']);
-                    $filename_base = date('Y-m-d_h-i-s-');
+                    $filename_base = date('-Y-m-d_h-i-s');
                             
                     foreach($host['databases'] as $db)
                     {           
                         $mysql_dump = $this->config['mysqldump_location'];
-                        $filename   = "{$filename_base}{$db}.sql.bz2";
+                        $filename   = "{$db}{$filename_base}.sql.bz2";
 
                         $path       = $dir . $filename;
                         $esc_path   = escapeshellarg($path);
