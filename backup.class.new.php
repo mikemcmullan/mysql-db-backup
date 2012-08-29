@@ -167,21 +167,23 @@
                 foreach($this->config['hosts'] as $host)
                 {
                     //print_r($host);
-                    $path = $this->create_directory_structure($host['local_path']);
-                    $esc_path = escapeshellarg($path); 
+                    $dir = $this->create_directory_structure($host['local_path']);
+                    $filename_base = date('Y-m-d_h-i-s-');
                             
                     foreach($host['databases'] as $db)
                     {           
                         $mysql_dump = $this->config['mysqldump_location'];
-                        
-                        if(file_exists("{$esc_path}{$db}.sql.bz2"))
-                            `rm {$esc_path}{$db}.sql.bz2`;
-                        
-                        //$host['db_host'] = 'localhost';
+                        $filename   = "{$filename_base}{$db}.sql.bz2";
 
-                        `{$mysql_dump} {$host['dump_options']} --host={$host['db_host']} --user={$host['db_user']} --password='{$host['db_pass']}' {$db} | bzip2  > {$esc_path}{$db}.sql.bz2`;
+                        $path       = $dir . $filename;
+                        $esc_path   = escapeshellarg($path);
+                        
+                        if(file_exists($path))
+                            `rm {$esc_path}`;
+                        
+                        `{$mysql_dump} {$host['dump_options']} --host={$host['db_host']} --user={$host['db_user']} --password='{$host['db_pass']}' {$db} | bzip2  > {$esc_path}`;
         
-                        echo "{$path}{$db}.sql.bz2\n";
+                        echo "{$path}\n";
                     }
                 }
             }
