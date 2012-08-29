@@ -229,10 +229,10 @@
             foreach($required_params as $param)
             {
                 if(!isset($params[$param]))
-                    $error++;
+                    $errors++;
             }
             
-            if($error > 0)
+            if($errors > 0)
                 throw new exception(sprintf('You\'re missing some required config params. You must provide %s.', implode(', ', $required_params)));
         }
     
