@@ -9,11 +9,12 @@
         $backup = new Mysql_Backup;
         
         $backup->initialize(array(
-            'mysqldump_location' => '/Applications/MAMP/Library/bin/mysqldump'
+            'mysqldump_location' => '/usr/local/mysql-5.5.25a-osx10.6-x86_64/bin/mysqldump',
+            'local_path' => '/Users/wiseass911/mysql-backups/'
         ));
         
         $backup->set_database_host(array(
-            'db_host' => ':/Applications/MAMP/tmp/mysql/mysql.sock',
+            'db_host' => 'localhost',
             'db_user' => 'root',
             'db_pass' => 'root',
             //'db_name' => array('shadowlines', 'tndl'),
